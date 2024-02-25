@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:modernlogintute/components/my_button.dart';
 import 'package:modernlogintute/components/my_textfield.dart';
 import 'package:modernlogintute/components/square_tile.dart';
+import 'package:modernlogintute/services/auth_service.dart';
 
 class RegisterPage extends StatefulWidget {
   final Function()? onTap;
@@ -71,7 +72,7 @@ class _RegisterPageState extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
           image: DecorationImage(
         image: AssetImage("lib/images/background.jpg"),
         fit: BoxFit.cover,
@@ -173,16 +174,22 @@ class _RegisterPageState extends State<RegisterPage> {
                   const SizedBox(height: 50),
 
                   // google + apple sign in buttons
-                  const Row(
+                  Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       // google button
-                      SquareTile(imagePath: 'lib/images/google.png'),
+                      SquareTile(
+                        imagePath: 'lib/images/google.png',
+                        ontap: () => AuthService().signInWithGoogle(),
+                      ),
 
-                      SizedBox(width: 25),
+                      const SizedBox(width: 25),
 
                       // apple button
-                      SquareTile(imagePath: 'lib/images/apple.png')
+                      SquareTile(
+                        ontap: () => AuthService().signInWithGoogle(),
+                        imagePath: 'lib/images/apple.png',
+                      )
                     ],
                   ),
 

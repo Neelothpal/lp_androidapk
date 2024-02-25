@@ -4,6 +4,7 @@ import 'package:modernlogintute/components/my_button.dart';
 import 'package:modernlogintute/components/my_textfield.dart';
 import 'package:modernlogintute/components/square_tile.dart';
 import 'package:modernlogintute/pages/forgotpassword_page.dart';
+import 'package:modernlogintute/services/auth_service.dart';
 
 class LoginPage extends StatefulWidget {
   final Function()? onTap;
@@ -186,16 +187,20 @@ class _LoginPageState extends State<LoginPage> {
                   const SizedBox(height: 25),
 
                   // google + apple sign in buttons
-                  const Row(
+                  Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       // google button
-                      SquareTile(imagePath: 'lib/images/google.png'),
+                      SquareTile(
+                          ontap: () => AuthService().signInWithGoogle(),
+                          imagePath: 'lib/images/google.png'),
 
                       SizedBox(width: 25),
 
                       // apple button
-                      SquareTile(imagePath: 'lib/images/apple.png')
+                      SquareTile(
+                          ontap: () => AuthService().signInWithGoogle(),
+                          imagePath: 'lib/images/apple.png')
                     ],
                   ),
 
